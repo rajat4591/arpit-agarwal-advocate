@@ -14,10 +14,10 @@ const offices = [
     phone: '+91 94570 44445',
     phoneHref: 'tel:+919457044445',
     hours: 'Available Daily · By Appointment',
-    mapsHref: 'https://maps.google.com/?q=Allahabad+High+Court+Prayagraj+Uttar+Pradesh',
-    // Allahabad High Court, Civil Lines, Prayagraj
+    mapsHref: 'https://www.google.com/maps/place/Arpit+Agarwal,+Advocate/@25.4704995,81.8202242,17z/data=!3m1!4b1!4m6!3m5!1s0x399acbb93b8b2677:0xd859776f9c3f2738!8m2!3d25.4704947!4d81.8227991!16s%2Fg%2F11n59xkx_b',
+    // Arpit Agarwal, Advocate — Prayagraj, from Google Maps place link
     mapEmbed:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.8!2d81.8467!3d25.4484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399acb2d3b8a7b3b%3A0xb2f6e3c1a2d4e5f6!2sAllahabad%20High%20Court!5e0!3m2!1sen!2sin!4v1700000000001',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.8!2d81.8202242!3d25.4704995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399acbb93b8b2677%3A0xd859776f9c3f2738!2sArpit%20Agarwal%2C%20Advocate!5e0!3m2!1sen!2sin!4v1700000000001',
     accentFrom: 'from-[#92400e]',
     accentTo: 'to-[#78350f]',
     accentBorder: 'border-amber-600',
@@ -38,10 +38,10 @@ const offices = [
     phone: '+91 98376 84448',
     phoneHref: 'tel:+919837684448',
     hours: 'Available Daily · By Appointment',
-    mapsHref: 'https://maps.google.com/?q=District+Court+Pilibhit+Uttar+Pradesh',
-    // District Court Pilibhit, UP
+    mapsHref: 'https://www.google.com/maps/place/Arpit+Agarwal/@28.6264891,79.799527,17z/data=!3m1!4b1!4m6!3m5!1s0x39a03f174e21b39f:0x3e17a977881b7d54!8m2!3d28.6264844!4d79.8021019!16s%2Fg%2F119ttv3k4',
+    // Arpit Agarwal office, Pilibhit — from Google Maps place link
     mapEmbed:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.2!2d79.8006!3d28.6319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a09b3b3b3b3b3b%3A0xc3d4e5f6a7b8c9d0!2sDistrict%20Court%20Pilibhit!5e0!3m2!1sen!2sin!4v1700000000002',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.2!2d79.799527!3d28.6264891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a03f174e21b39f%3A0x3e17a977881b7d54!2sArpit%20Agarwal!5e0!3m2!1sen!2sin!4v1700000000002',
     accentFrom: 'from-[#1E3A8A]',
     accentTo: 'to-[#1e40af]',
     accentBorder: 'border-blue-600',

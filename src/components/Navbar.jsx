@@ -4,10 +4,9 @@ import { Menu, X, Phone } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
-  { label: 'Legacy', href: '#legacy' },
   { label: 'Practice Areas', href: '#practice' },
-  { label: 'Track Cases', href: '#track' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Legacy', href: '#legacy' },
+  { label: 'Dual Offices', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -31,23 +30,24 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#0F172A]/95 backdrop-blur-md shadow-lg shadow-black/20'
-          : 'bg-transparent'
+          ? 'bg-slate-950/90 backdrop-blur-md shadow-lg shadow-black/30 border-b border-slate-800/60'
+          : 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
-        {/* Logo */}
+
+        {/* Logo — "AGARWAL & ASSOCIATES" */}
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, '#home')}
           className="flex flex-col leading-tight group"
-          aria-label="Advocate Arpit Agarwal — Home"
+          aria-label="Agarwal & Associates — Home"
         >
-          <span className="text-white font-serif text-lg md:text-xl font-bold tracking-widest uppercase group-hover:text-[#D4AF37] transition-colors duration-200">
-            Arpit Agarwal
+          <span className="text-white font-serif text-base md:text-lg font-bold tracking-[0.18em] uppercase group-hover:text-[#D4AF37] transition-colors duration-200">
+            Agarwal &amp; Associates
           </span>
-          <span className="text-[#D4AF37] text-[10px] md:text-xs font-sans font-medium tracking-[0.3em] uppercase">
-            Advocate
+          <span className="text-[#D4AF37] text-[9px] md:text-[10px] font-sans font-semibold tracking-[0.35em] uppercase mt-0.5">
+            Just and Legal
           </span>
         </a>
 
@@ -92,7 +92,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-[#0F172A]/98 backdrop-blur-md border-t border-white/10 px-4 pb-6 pt-4"
+            className="md:hidden bg-slate-950/98 backdrop-blur-md border-t border-slate-800/50 px-4 pb-6 pt-4"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (

@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import Legacy from './components/Legacy';
 import StatsBar from './components/StatsBar';
 import PracticeAreas from './components/PracticeAreas';
+import MediaValidation from './components/MediaValidation';
 import Testimonials from './components/Testimonials';
 import TrackCases from './components/TrackCases';
 import Contact from './components/Contact';
@@ -17,6 +18,7 @@ export default function App() {
         <Legacy />
         <StatsBar />
         <PracticeAreas />
+        <MediaValidation />
         <Testimonials />
         <TrackCases />
         <Contact />
