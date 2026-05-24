@@ -7,7 +7,7 @@ export default function MediaValidation() {
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <section className="py-20 md:py-28 bg-[#0F172A] relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-[#0F172A] relative overflow-hidden" id="media">
       {/* Subtle diagonal pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"

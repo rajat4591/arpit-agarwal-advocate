@@ -6,6 +6,7 @@ const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Practice Areas', href: '#practice' },
   { label: 'Legacy', href: '#legacy' },
+  { label: 'Media', href: '#media' },
   { label: 'Dual Offices', href: '#contact' },
 ];
 
