@@ -1,34 +1,151 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Clock, ExternalLink, Landmark, Scale } from 'lucide-react';
 
-const contactDetails = [
+const offices = [
   {
-    icon: MapPin,
-    label: 'Office Address',
-    value: '39, Ashok Nagar, Prayagraj',
-    sub: 'Uttar Pradesh 211001',
-    href: 'https://maps.google.com/?q=39+Ashok+Nagar+Prayagraj+UP+211001',
-    linkLabel: 'Get Directions',
-    external: true,
+    id: 'prayagraj',
+    icon: Landmark,
+    advocate: 'Advocate Arpit Agarwal',
+    court: 'Allahabad High Court',
+    tag: 'High Court Practice',
+    address: 'Allahabad High Court Chambers',
+    city: 'Prayagraj, Uttar Pradesh',
+    phone: '+91 94570 44445',
+    phoneHref: 'tel:+919457044445',
+    hours: 'Available Daily · By Appointment',
+    mapsHref: 'https://maps.google.com/?q=Allahabad+High+Court+Prayagraj+Uttar+Pradesh',
+    // Allahabad High Court, Civil Lines, Prayagraj
+    mapEmbed:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.8!2d81.8467!3d25.4484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399acb2d3b8a7b3b%3A0xb2f6e3c1a2d4e5f6!2sAllahabad%20High%20Court!5e0!3m2!1sen!2sin!4v1700000000001',
+    accentFrom: 'from-[#92400e]',
+    accentTo: 'to-[#78350f]',
+    accentBorder: 'border-amber-600',
+    accentText: 'text-amber-700',
+    accentBg: 'bg-amber-50',
+    btnClass:
+      'bg-[#D4AF37] hover:bg-[#B45309] text-[#0F172A]',
+    tagClass: 'bg-amber-50 border-amber-300 text-amber-700',
   },
   {
-    icon: Phone,
-    label: 'Direct Phone',
-    value: '+91 94570 44445',
-    sub: 'Available for urgent matters',
-    href: 'tel:+919457044445',
-    linkLabel: 'Call Now',
-    external: false,
-  },
-  {
-    icon: Clock,
-    label: 'Office Hours',
-    value: 'Monday – Saturday',
-    sub: 'By Appointment Only',
-    href: null,
+    id: 'pilibhit',
+    icon: Scale,
+    advocate: 'Advocate Sanjay Kumar Agarwal',
+    court: 'District Court, Pilibhit',
+    tag: 'District Court Practice',
+    address: 'Civil Lines, District Court Campus',
+    city: 'Pilibhit, Uttar Pradesh – 262001',
+    phone: '+91 98376 84448',
+    phoneHref: 'tel:+919837684448',
+    hours: 'Available Daily · By Appointment',
+    mapsHref: 'https://maps.google.com/?q=District+Court+Pilibhit+Uttar+Pradesh',
+    // District Court Pilibhit, UP
+    mapEmbed:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.2!2d79.8006!3d28.6319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a09b3b3b3b3b3b%3A0xc3d4e5f6a7b8c9d0!2sDistrict%20Court%20Pilibhit!5e0!3m2!1sen!2sin!4v1700000000002',
+    accentFrom: 'from-[#1E3A8A]',
+    accentTo: 'to-[#1e40af]',
+    accentBorder: 'border-blue-600',
+    accentText: 'text-blue-700',
+    accentBg: 'bg-blue-50',
+    btnClass:
+      'bg-[#1E3A8A] hover:bg-[#1e40af] text-white',
+    tagClass: 'bg-blue-50 border-blue-300 text-blue-700',
   },
 ];
+
+function OfficeCard({ office, index }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const Icon = office.icon;
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 28 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      className={`bg-white rounded-2xl border ${office.accentBorder} border-opacity-30 shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col`}
+    >
+      {/* Top accent bar */}
+      <div className={`h-1.5 w-full bg-gradient-to-r ${office.accentFrom} ${office.accentTo}`} />
+
+      <div className="p-6 md:p-7 flex flex-col gap-5 flex-1">
+
+        {/* Header: icon + court tag + advocate name */}
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start gap-3">
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br ${office.accentFrom} ${office.accentTo} shadow-md`}>
+              <Icon size={18} className="text-white" />
+            </div>
+            <div>
+              <span className={`inline-block text-[10px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full border ${office.tagClass} mb-1.5`}>
+                {office.tag}
+              </span>
+              <h3 className="font-serif text-lg md:text-xl font-bold text-[#0F172A] leading-tight">
+                {office.advocate}
+              </h3>
+              <p className={`text-sm font-semibold mt-0.5 ${office.accentText}`}>
+                {office.court}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Address + Hours */}
+        <div className="flex flex-col gap-2.5">
+          <div className="flex items-start gap-3 bg-slate-50 rounded-xl p-3.5">
+            <MapPin size={15} className={`${office.accentText} flex-shrink-0 mt-0.5`} />
+            <div>
+              <p className="text-[#0F172A] font-semibold text-sm leading-snug">{office.address}</p>
+              <p className="text-slate-500 text-xs mt-0.5">{office.city}</p>
+              <a
+                href={office.mapsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-1 text-xs font-semibold mt-1.5 transition-colors duration-150 ${office.accentText} hover:opacity-70`}
+              >
+                Open in Google Maps
+                <ExternalLink size={10} />
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 bg-slate-50 rounded-xl p-3.5">
+            <Clock size={15} className={`${office.accentText} flex-shrink-0`} />
+            <div>
+              <p className="text-[#0F172A] font-semibold text-sm">{office.hours}</p>
+              <p className="text-slate-400 text-xs">Consultations by prior appointment only</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Call CTA */}
+        <a
+          href={office.phoneHref}
+          className={`flex items-center justify-center gap-2.5 ${office.btnClass} font-bold text-sm px-5 py-3.5 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-95`}
+        >
+          <Phone size={16} strokeWidth={2.5} />
+          {office.phone}
+        </a>
+
+        {/* Map embed */}
+        <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm flex-1" style={{ minHeight: '220px' }}>
+          <iframe
+            title={`Map — ${office.court}`}
+            src={office.mapEmbed}
+            width="100%"
+            height="100%"
+            style={{ border: 0, minHeight: '220px', display: 'block' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Contact() {
   const titleRef = useRef(null);
@@ -47,15 +164,15 @@ export default function Contact() {
           className="text-center mb-14"
         >
           <span className="text-[#B45309] text-xs font-semibold tracking-[0.25em] uppercase">
-            Get in Touch
+            Our Locations
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] mt-3 mb-4">
-            Visit or{' '}
-            <span className="text-[#1E3A8A] italic">Call Us</span>
+            Two Offices.{' '}
+            <span className="text-[#1E3A8A] italic">One Legacy.</span>
           </h2>
-          <p className="text-slate-500 text-base max-w-xl mx-auto leading-relaxed">
-            Reach out directly to discuss your legal matter. All consultations are
-            confidential and handled with the utmost discretion.
+          <p className="text-slate-500 text-base max-w-2xl mx-auto leading-relaxed">
+            Serving clients across Uttar Pradesh from our High Court chambers in Prayagraj
+            and our established District Court practice in Pilibhit.
           </p>
           <div className="flex items-center justify-center gap-3 mt-6">
             <div className="h-px w-16 bg-[#D4AF37]" />
@@ -64,136 +181,48 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Two-column grid: contact details left, map right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+        {/* Dual office grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-8">
+          {offices.map((office, i) => (
+            <OfficeCard key={office.id} office={office} index={i} />
+          ))}
+        </div>
 
-          {/* ── Left: Contact Details ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-5"
-          >
-            {/* Office photo */}
-            <div className="relative rounded-2xl overflow-hidden h-52 shadow-md">
-              <img
-                src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=900&q=80&fit=crop"
-                alt="Legal office — Allahabad High Court area, Prayagraj"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/75 to-transparent" />
-              <div className="absolute bottom-4 left-5">
-                <p className="text-white font-serif font-bold text-lg leading-tight">Prayagraj Office</p>
-                <p className="text-[#D4AF37] text-xs tracking-widest uppercase mt-0.5">Uttar Pradesh</p>
-              </div>
-            </div>
-
-            {/* Contact detail cards */}
-            <div className="flex flex-col gap-3">
-              {contactDetails.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.label}
-                    className="flex items-start gap-4 bg-white rounded-xl border border-slate-100 shadow-sm p-4 hover:shadow-md transition-shadow duration-200"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-[#0F172A] flex items-center justify-center flex-shrink-0">
-                      <Icon size={16} className="text-[#D4AF37]" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-slate-400 text-[10px] font-semibold uppercase tracking-widest mb-0.5">
-                        {item.label}
-                      </p>
-                      <p className="text-[#0F172A] font-semibold text-sm">{item.value}</p>
-                      <p className="text-slate-500 text-xs">{item.sub}</p>
-                      {item.href && (
-                        <a
-                          href={item.href}
-                          target={item.external ? '_blank' : undefined}
-                          rel={item.external ? 'noopener noreferrer' : undefined}
-                          className="inline-flex items-center gap-1 text-[#1E3A8A] hover:text-[#D4AF37] text-xs font-semibold mt-1.5 transition-colors duration-150"
-                        >
-                          {item.linkLabel}
-                          <ExternalLink size={10} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Primary call CTA */}
+        {/* Bottom confidentiality strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="mt-8 bg-[#0F172A] rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <div>
+            <p className="text-[#D4AF37] font-serif font-semibold text-base">
+              Strictly Confidential Consultations
+            </p>
+            <p className="text-slate-400 text-xs mt-1 leading-relaxed max-w-lg">
+              All communications are protected by attorney-client privilege.
+              Your information will never be shared with any third party.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <a
               href="tel:+919457044445"
-              className="flex items-center justify-center gap-3 bg-[#D4AF37] hover:bg-[#B45309] text-[#0F172A] font-bold text-base px-6 py-4 rounded-xl transition-all duration-200 shadow-lg hover:shadow-amber-900/30 active:scale-95"
+              className="flex items-center justify-center gap-2 bg-[#D4AF37] hover:bg-[#B45309] text-[#0F172A] font-bold text-sm px-5 py-3 rounded-xl transition-all duration-200 active:scale-95 whitespace-nowrap"
             >
-              <Phone size={20} strokeWidth={2.5} />
-              Call +91 94570 44445
+              <Phone size={14} strokeWidth={2.5} />
+              Prayagraj: +91 94570 44445
             </a>
+            <a
+              href="tel:+919837684448"
+              className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm px-5 py-3 rounded-xl transition-all duration-200 active:scale-95 whitespace-nowrap"
+            >
+              <Phone size={14} strokeWidth={2.5} />
+              Pilibhit: +91 98376 84448
+            </a>
+          </div>
+        </motion.div>
 
-            {/* Confidentiality note */}
-            <div className="bg-[#0F172A] rounded-xl p-5 text-center">
-              <p className="text-[#D4AF37] font-serif font-semibold text-base mb-1">
-                Strictly Confidential
-              </p>
-              <p className="text-slate-400 text-xs leading-relaxed">
-                All communications are protected by attorney-client privilege.
-                Your information will never be shared.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* ── Right: Google Maps embed ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col gap-4"
-          >
-            {/* Map container */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100" style={{ height: '420px' }}>
-              <iframe
-                title="Advocate Arpit Agarwal Office Location — 39 Ashok Nagar, Prayagraj"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.3!2d81.8463!3d25.4358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399acb3b3b3b3b3b%3A0x0!2s39%2C%20Ashok%20Nagar%2C%20Prayagraj%2C%20Uttar%20Pradesh%20211001!5e0!3m2!1sen!2sin!4v1700000000000"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full"
-              />
-            </div>
-
-            {/* Address card below map */}
-            <div className="bg-white rounded-xl border border-slate-100 shadow-sm p-5 flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-[#0F172A] flex items-center justify-center flex-shrink-0">
-                <MapPin size={16} className="text-[#D4AF37]" />
-              </div>
-              <div className="flex-1">
-                <p className="text-[#0F172A] font-serif font-bold text-base leading-tight">
-                  39, Ashok Nagar, Prayagraj
-                </p>
-                <p className="text-slate-500 text-sm mt-0.5">Uttar Pradesh 211001, India</p>
-                <p className="text-slate-400 text-xs mt-1">Near Allahabad High Court, Civil Lines</p>
-                <a
-                  href="https://maps.google.com/?q=39+Ashok+Nagar+Prayagraj+UP+211001"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 mt-2 text-[#1E3A8A] hover:text-[#D4AF37] text-xs font-semibold transition-colors duration-150"
-                >
-                  Open in Google Maps
-                  <ExternalLink size={11} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
       </div>
     </section>
   );

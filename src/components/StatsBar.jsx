@@ -2,10 +2,10 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const stats = [
-  { value: 550, suffix: '+', label: 'High Court Cases Represented', description: 'Across Writs, Appeals & Civil Matters' },
-  { value: 3, suffix: '', label: 'Generations of Legal Legacy', description: 'A Family Tradition of Justice' },
-  { value: 5.0, suffix: '', label: 'Google Rated', description: 'Verified Client Trust', isDecimal: true },
-  { value: 15, suffix: '+', label: 'Years of Cumulative Family Precedent', description: 'Deep-Rooted Legal Expertise' },
+  { value: 550, suffix: '+', label: 'High Court Matters', description: 'Writs, Appeals & Civil Advocacy' },
+  { value: 12500, suffix: '+', label: 'Total Cases Represented', description: 'Across Trial Courts & High Courts' },
+  { value: 3, suffix: '', label: 'Generations of Excellence', description: 'A Continuous Family Tradition of Justice' },
+  { value: 44, suffix: '+', label: 'Years of Active Precedent', description: 'Serving the Community Since 1982' },
 ];
 
 function CountUp({ target, suffix, isDecimal, inView }) {
