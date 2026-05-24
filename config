@@ -1,0 +1,11 @@
+# Rajat Account Profile
+Host github.com-rajat
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_rajat
+
+# Virendra Account Profile
+Host github.com-virendra
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_virendra
